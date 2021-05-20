@@ -13,18 +13,60 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       posts, 
-      logged_in: true 
+      logged_in: true //req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
   }
-
-//write route to send the data from the table -- use .json
-//on server.js connect view(homepage) and layout directories
-//render data using handlebars, not just json
-
-//res.json({hello: 'hello'});
 });
+
+
+router.get('/dashboard', async (req, res) => {
+    try {
+      const postData = await Post.findAll();
+  
+      // Serialize data so the template can read it
+      const posts = postData.map((post) => post.get({ plain: true }));
+  
+      // Pass serialized data and session flag into template
+      res.render('dashboard', { 
+        posts, 
+        //logged_in: true //req.session.logged_in
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+  //router.get for login/signup (post)
+  //    - use middleware 
+  //then build api (model)
+
+  router.get('/account', async (req, res) => {
+      try {
+          res.render('account');
+
+      } catch (err) {
+        res.status(500).json(err);
+      }
+  });
+
+
+//router.post for creating account/log
+
+
+//router.post for loging in/log
+
+
+//post update and delete for posts 
+
+
+
+
+
+
+
+
 
 // router.get('/project/:id', async (req, res) => {
 //   try {
