@@ -6,14 +6,12 @@ router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll();
 
-    // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
 
-    // Pass serialized data and session flag into template
     res.render('homepage', { 
       posts, 
-      logged_in: true //req.session.logged_in
+      //logged_in: true //req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -25,13 +23,10 @@ router.get('/dashboard', async (req, res) => {
     try {
       const postData = await Post.findAll();
   
-      // Serialize data so the template can read it
       const posts = postData.map((post) => post.get({ plain: true }));
   
-      // Pass serialized data and session flag into template
       res.render('dashboard', { 
-        posts, 
-        //logged_in: true //req.session.logged_in
+        posts,
       });
     } catch (err) {
       res.status(500).json(err);
@@ -42,23 +37,30 @@ router.get('/dashboard', async (req, res) => {
   //    - use middleware 
   //then build api (model)
 
-  router.get('/account', async (req, res) => {
-      try {
-          res.render('account');
+router.get('/account', async (req, res) => {
+    try {
+        res.render('account');
 
-      } catch (err) {
+    } catch (err) {
         res.status(500).json(err);
-      }
-  });
+    }
+});
 
 
-//router.post for creating account/log
+//router.post for creating account
+router.post('/account', async (req,res) => {
+    try {
+        //
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
-//router.post for loging in/log
+//router.post for loging in
 
 
-//post update and delete for posts 
+//post, update, and delete for blog-posts 
 
 
 
