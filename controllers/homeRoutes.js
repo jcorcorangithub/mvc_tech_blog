@@ -37,9 +37,9 @@ router.get('/dashboard', async (req, res) => {
   //    - use middleware 
   //then build api (model)
 
-router.get('/account', async (req, res) => {
+router.get('/login', async (req, res) => {
     try {
-        res.render('account');
+        res.render('login');
 
     } catch (err) {
         res.status(500).json(err);
