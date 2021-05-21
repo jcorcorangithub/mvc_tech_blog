@@ -48,7 +48,7 @@ router.get('/account', async (req, res) => {
 
 
 //router.post for creating account
-router.post('/account', async (req,res) => {
+router.post('/create', async (req,res) => {
     try {
         //
     } catch (err) {
@@ -58,6 +58,13 @@ router.post('/account', async (req,res) => {
 
 
 //router.post for loging in
+router.post('/login', async (req,res) => {
+    try {
+        //
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 //post, update, and delete for blog-posts 
