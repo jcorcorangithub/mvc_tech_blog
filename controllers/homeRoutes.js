@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log(posts);
-
+  
     res.render('homepage', { 
       posts, 
       logged_in: true //req.session.logged_in
@@ -20,6 +20,8 @@ router.get('/', async (req, res) => {
 
 
 router.get('/dashboard', async (req, res) => {
+  //get the posts only from the user who is logged in
+  //get rid of dashboard link and place a link for the homepage
     try {
       const postData = await Post.findAll();
   
@@ -27,6 +29,7 @@ router.get('/dashboard', async (req, res) => {
   
       res.render('dashboard', { 
         posts,
+        logged_in: true
       });
     } catch (err) {
       res.status(500).json(err);
