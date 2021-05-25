@@ -10,7 +10,7 @@ class User extends Model {}
 //     }
 //   }
 
-Post.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -18,7 +18,7 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    userName: {
+    user_name: {
         type: DataTypes.STRING,
         allowNull: false,
     },

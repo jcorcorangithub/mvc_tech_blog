@@ -5,26 +5,14 @@ const userData = require('./userData.json');
 const postData = require('./postData.json');
 
 
+const seedDatabase = async () => {
+    await sequelize.sync({ force: true });
 
-//dont know what this is for ______________
-
-// const seedDatabase = async () => {
-//     await sequelize.sync({ force: true });
+    await User.bulkCreate(userData);
+    await Post.bulkCreate(postData);
   
-//     const users = await User.bulkCreate(userData, {
-//       individualHooks: true,
-//       returning: true,
-//     });
+    process.exit(0);
+  };
   
-//     for (const project of projectData) {
-//       await Project.create({
-//         ...project,
-//         user_id: users[Math.floor(Math.random() * users.length)].id,
-//       });
-//     }
-  
-//     process.exit(0);
-//   };
-  
-//   seedDatabase();
+  seedDatabase();
   

@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
   
     res.render('homepage', { 
       posts, 
-      //logged_in: true //req.session.logged_in
+      logged_in: req.session.
     });
   } catch (err) {
     res.status(500).json(err);
@@ -29,7 +29,7 @@ router.get('/dashboard', async (req, res) => {
   
       res.render('dashboard', { 
         posts,
-        logged_in: true
+        //logged_in: true
       });
     } catch (err) {
       res.status(500).json(err);
@@ -38,7 +38,7 @@ router.get('/dashboard', async (req, res) => {
 
   //router.get for login/signup (post)
   //    - use middleware 
-  //then build api (model)
+  
 
 router.get('/login', async (req, res) => {
     try {

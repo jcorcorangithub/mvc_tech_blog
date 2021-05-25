@@ -8,16 +8,23 @@ router.post('/login', async (req,res) => {
     try {
         const user = await User.findOne({
             where: {
-                email: req.body.email
+                username: req.body.username
             }
         });
 
         if(!user) {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
-        }
+        } 
+        // validate password?
+
+        req.session.save(() => {
+            req.session.user_id = userData.id
+            req.session.logged_in = true;
+            res.json({ user: userData, message: "You are logged in"});
+        });
     } catch (err) {
-        res.status(500).json(err);
+        res.status(400).json(err);
     }
 });
 
