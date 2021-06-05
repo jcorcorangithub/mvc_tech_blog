@@ -25,9 +25,22 @@ router.post('/login', async (req,res) => {
             res.json({ user: user, message: "You are logged in"});
             console.log('check2')
         });
+        //res.render('views/dashboard');
+
     } catch (err) {
         res.status(400).json(err);
     }
+});
+
+router.get('/logout', async (req,res) => {
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            res.status(200).end();
+        });
+    } else {
+        res.status(400).end();
+    }
+    
 });
 
 
