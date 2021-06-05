@@ -2,6 +2,7 @@ const logoutButton = document.querySelector('#logout');
 
 const logout = async () => {
     const response = await fetch('/api/users/logout', {
+        // i dont know if users needs to be there 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -15,4 +16,4 @@ const logout = async () => {
     }
 }
 
-logoutButton.addEventListener("click", logout);
+//logoutButton.addEventListener("click", logout);
