@@ -1,1 +1,25 @@
-<h1>{{title}}</h1>
+<div>
+    <h1>{{title}}</h1>
+    <h2>{{user_id}}</h2>
+</div>
+<div>
+    <h3>Created on: {{post_date}}</h3>
+    <p>{{body}}</p>
+</div>
+
+{{!-- this is where previously made comments will go --}}
+{{#each comments as |comment| }}
+{{> post-comments}} {{!-- this will come from a partials file --}}
+{{/each}}
+
+{{!-- this is where a user can write a comment --}}
+<form>
+    <h2>Write a comment</h2>
+    <div class="form-group">
+        <textarea class="form-control" id="textarea" rows="3" placeholder="write your comment here..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">submit comment</button>
+</form>
+
+
+<script src="./js/post.js"></script>
